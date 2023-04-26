@@ -1,0 +1,1 @@
+# aws cloudwatch, kinesis, and opensearch with cognito

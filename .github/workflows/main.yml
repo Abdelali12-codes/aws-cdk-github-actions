@@ -19,7 +19,7 @@ jobs:
         node-version: '14.x'
 
     - name: Install AWS CDK
-      run: npm install aws-cdk --save-dev
+      run: npm install -g aws-cdk
 
     - name: Cdk Bootstrap
       run: cdk bootstrap

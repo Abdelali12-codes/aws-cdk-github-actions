@@ -3,7 +3,7 @@ name: CDK Deployment
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   deploy:
@@ -17,9 +17,24 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: '14.x'
-
+    
     - name: Install AWS CDK
-      run: npm install aws-cdk --save-dev
+      run: npm install -g aws-cdk
+    
+    - name: Setup Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
+
+    - name: Create venv
+      run: python -m venv .venv
+
+    - name: Activate venv
+      run: |
+        source .venv/bin/activate
+
+    - name: Install requirements
+      run: pip install -r requirements.txt
 
     - name: Cdk Bootstrap
       run: cdk bootstrap
